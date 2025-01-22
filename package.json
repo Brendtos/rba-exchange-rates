@@ -1,0 +1,36 @@
+{
+  "name": "rba-exchange-rates",
+  "version": "1.0.0",
+  "main": "dist/rates.js",
+  "scripts": {
+    "test": "jest",
+    "prepublishOnly": "npm test && npm run build",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/utils.js",
+    "dev": "tsc -p tsconfig.json --watch"
+  },
+  "keywords": ["rba", "exchange rates", "currency", "australia"],
+  "author": "Brendt Sheen <brendtos@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "description": "The Reserve Bank of Australia (RBA) publishes historical data including [exchange rates](https://www.rba.gov.au/statistics/historical-data.html#exchange-rates). Unfortunately, the data is in CSV format and not structured well making it difficult to use. This package provides functions to fetch, parse, cache and query the data returning a JSON object.",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.11.16",
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendtos/rba-exchange-rates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brendtos/rba-exchange-rates/issues"
+  },
+  "homepage": "https://github.com/brendtos/rba-exchange-rates#readme"
+}

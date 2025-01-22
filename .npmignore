@@ -1,0 +1,7 @@
+node_modules/
+.cache/*
+.git/
+.gitignore
+test/
+*.test.js
+.DS_Store 
