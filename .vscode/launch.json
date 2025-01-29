@@ -8,9 +8,10 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/src/rates.ts",
-            "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-            "sourceMaps": true
+            "program": "${workspaceFolder}/example/usd_rates.ts",
+            "runtimeArgs": ["-r", "ts-node/register"],
+            "sourceMaps": true,
+            "preLaunchTask": "tsc: build - tsconfig.json"
         },
         {
             "type": "node",
