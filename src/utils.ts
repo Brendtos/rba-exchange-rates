@@ -64,6 +64,10 @@ function splitData(data: string[], slices: number[][] | number): string[][] {
 
 async function saveData(fileName: string, data: any): Promise<void> {
   try {
+    const dir = path.dirname(fileName);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
     fs.writeFileSync(fileName, JSON.stringify(data, null, 2));
   } catch (error) {
     throw new Error(`Error saving the file: ${(error as Error).message}`);

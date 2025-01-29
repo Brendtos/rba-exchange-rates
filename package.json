@@ -1,6 +1,6 @@
 {
   "name": "rba-exchange-rates",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/rates.js",
   "scripts": {
     "test": "jest",
