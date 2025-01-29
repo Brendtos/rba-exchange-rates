@@ -1,7 +1,7 @@
 import { exchangeRates } from "./transform";
 
 async function getExchangeRates(): Promise<Record<string, any>[]>;
-async function getExchangeRates(currency: string): Promise<Record<string, any>>;
+async function getExchangeRates(currency?: string): Promise<Record<string, any>>;
 
 async function getExchangeRates(currency?: string): Promise<Record<string, any>[] | Record<string, any>> {
   let rates: Record<string, any>[] | Record<string, any> = await exchangeRates();

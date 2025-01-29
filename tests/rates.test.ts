@@ -31,6 +31,13 @@ describe('RBA Exchange Rates', () => {
   });
 
   describe('getExchangeRates', () => {
+
+    it('should format publication date as YYYY-MM-DD', async () => {
+      const usdRates = await rba.rates('USD');
+      expect(usdRates).toBeDefined();
+      expect(usdRates.publication_date).toBe('2025-01-28');
+    });
+
     it('should return exchange rates for USD', async () => {
       const usdRates = await rba.rates('USD');
       expect(usdRates).toBeDefined();
@@ -39,6 +46,38 @@ describe('RBA Exchange Rates', () => {
       expect(usdRates.rates_monthly).toBeDefined();
       expect(usdRates.rates_daily['2023-01-03']).toBe('0.6828');
       expect(usdRates.rates_monthly['2023-01']).toBe('0.6949');
+    });
+
+    it('should return exchange rates for GBP', async () => {
+      const usdRates = await rba.rates('GBP');
+      expect(usdRates).toBeDefined();
+      expect(usdRates.units).toBe('GBP');
+      expect(usdRates.rates_daily).toBeDefined();
+      expect(usdRates.rates_monthly).toBeDefined();
+      expect(usdRates.rates_daily['2023-01-03']).toBe('0.5656');
+      expect(usdRates.rates_monthly['2023-01']).toBe('0.5683');
+    });
+
+    it('should return null rates for AED', async () => {
+      const usdRates = await rba.rates('AED');
+      expect(usdRates).toBeDefined();
+      expect(usdRates.units).toBe('AED');
+      expect(usdRates.rates_daily).toBeDefined();
+      expect(usdRates.rates_monthly).toBeDefined();
+      expect(usdRates.rates_daily['2023-01-03']).toBe(null);
+      expect(usdRates.rates_monthly['2023-01']).toBe(null);
+    });
+
+    it('should return null rates till 2023-12-20 for CAD', async () => {
+      const usdRates = await rba.rates('CAD');
+      expect(usdRates).toBeDefined();
+      expect(usdRates.units).toBe('CAD');
+      expect(usdRates.rates_daily).toBeDefined();
+      expect(usdRates.rates_monthly).toBeDefined();
+      expect(usdRates.rates_daily['2023-12-20']).toBe(null);
+      expect(usdRates.rates_daily['2023-12-21']).toBe('0.9013');
+      expect(usdRates.rates_monthly['2023-12']).toBe(null);
+      expect(usdRates.rates_monthly['2024-01']).toBe('0.8922');
     });
 
     it('should handle errors when curreny is invalid', async () => {

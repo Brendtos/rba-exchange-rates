@@ -31,7 +31,7 @@ async function fetchData(url: string = rbaUrl): Promise<string>
 }
 
 function cleanData(data: string): string[] {
-  return data.replace(/\r\n/g, '\n').replace(/,,/g, '').replace(/\n$/g, '').split('\n');
+  return data.replace(/\r\n/g, '\n').replace(/\n$/g, '').split('\n');
 }
 
 async function isCacheValid(filePath: string, cacheMaxAge: number = 86400000): Promise<boolean> {
