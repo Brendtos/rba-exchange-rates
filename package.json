@@ -1,11 +1,12 @@
 {
   "name": "rba-exchange-rates",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/rates.js",
   "scripts": {
     "test": "jest",
     "prepublishOnly": "npm test && npm run build",
     "build": "tsc -p tsconfig.json",
+    "postbuild": "mv -f ./dist/src/* ./dist/ && rm -rf ./dist/src",
     "start": "ts-node example/usd_rates.ts",
     "dev": "tsx watch --watch-path=./src ./example/usd_rates.ts"
   },
